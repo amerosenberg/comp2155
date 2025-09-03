@@ -18,6 +18,17 @@ class PassingGrade(Grade):
     def __init__(self, percentage):
         super().__init__(percentage)
 
+    @property
+    def percentage(self):
+        return self.__percentage
 
-my_grade = Grade(90)
+    @percentage.setter
+    def percentage(self, value):
+
+        if isinstance(value, int) and value < 50:
+            raise ValueError("This is not a passing grade")
+
+my_grade = Grade(100)
 print(my_grade.percentage)
+
+pg = PassingGrade(40)
